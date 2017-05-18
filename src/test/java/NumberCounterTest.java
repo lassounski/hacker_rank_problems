@@ -1,21 +1,25 @@
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
-import com.googlecode.zohhak.api.TestWith;
-
 import org.junit.Test;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
-
 public class NumberCounterTest {
 
     private NumberCounter numberCounter = new NumberCounter();
 
-    @TestWith({"[2, 10, 5, 4, 8], [3, 1, 7, 8], [1, 0, 3, 4]",
-            "[2, 1, 1, 3, 3, 1, 4, -1, -1], [-2, 2, 11], [0, 6, 9]"})
-    public void shouldCountTheNumbersSmallerThanMaxes(int[] nums, int[] maxes, int[] results) {
+    @Test
+    public void shouldCountTheNumbersSmallerThanMaxes() {
+        int[] nums = new int[]{2, 10, 5, 4, 8};
+        int[] maxes = new int[]{3, 1, 7, 8};
+        int[] results = new int[]{1, 0, 3, 4};
+        assertThat(numberCounter.getSmallerThanCount(nums, maxes)).containsExactly(results);
+
+        nums = new int[]{2, 1, 1, 3, 3, 1, 4, -1, -1};
+        maxes = new int[]{-2, 2, 11};
+        results = new int[]{0, 6, 9};
         assertThat(numberCounter.getSmallerThanCount(nums, maxes)).containsExactly(results);
     }
 
