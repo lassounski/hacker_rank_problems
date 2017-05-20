@@ -1,5 +1,8 @@
+package programs;
+
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
+import org.assertj.core.api.Java6Assertions;
 import org.junit.Test;
 
 import java.util.Map;
@@ -15,12 +18,12 @@ public class NumberCounterTest {
         int[] nums = new int[]{2, 10, 5, 4, 8};
         int[] maxes = new int[]{3, 1, 7, 8};
         int[] results = new int[]{1, 0, 3, 4};
-        assertThat(numberCounter.getSmallerThanCount(nums, maxes)).containsExactly(results);
+        Java6Assertions.assertThat(numberCounter.getSmallerThanCount(nums, maxes)).containsExactly(results);
 
         nums = new int[]{2, 1, 1, 3, 3, 1, 4, -1, -1};
         maxes = new int[]{-2, 2, 11};
         results = new int[]{0, 6, 9};
-        assertThat(numberCounter.getSmallerThanCount(nums, maxes)).containsExactly(results);
+        Java6Assertions.assertThat(numberCounter.getSmallerThanCount(nums, maxes)).containsExactly(results);
     }
 
     @Test
